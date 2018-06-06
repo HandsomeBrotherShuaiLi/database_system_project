@@ -3,7 +3,17 @@ from bs4 import BeautifulSoup
 import re
 import codecs
 from contextlib import closing
+import json
+import pymongo
+import gridfs
 import os
+import pymysql
+client=pymongo.MongoClient('localhost',27017)
+db=client.sense
+data=db.data
+imgput=gridfs.GridFS(db)
+
+
 download_url="https://movie.douban.com/top250"
 def download_page(url):
     headers={
@@ -40,14 +50,23 @@ def download_pic(url,name):
 if __name__=='__main__':
     url=download_url
     n=1
+    # db=pymysql.connect('localhost','testuser','test123','TESTDB')
+    # cursor=db.cursor()
+    # cursor.execute('SELECT VERSION()')
+    # data=cursor.fetchone()
+    # print(data)
+    # db.close()
     with codecs.open('movies','w',encoding='utf-8') as fp:
         while(url):
             html=download_page(url)
             picdata=getpic(html)
             index=0
             movies,url=parse_html(html)
+
             for picinfo in picdata:
                 download_pic(picinfo[5:-1],'Top' + str(n) +'-'+ movies[index])
+                src={'name':movies[index]}
+                data.insert_one(src)
                 print(movies[index]+'下载完毕')
                 n+=1
                 index+=1
