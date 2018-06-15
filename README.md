@@ -9,3 +9,6 @@ what'more,mongoDB provides distributed storage and networkx creates complex netw
 
 ![demo1](demopic/1.png)
 ![demo2](demopic/2.png)
+![demo3](demopic/3.png)
+![demo5](demopic/4.png)
+![demo4](demopic/5.png)
