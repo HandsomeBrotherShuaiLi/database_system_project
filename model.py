@@ -10,15 +10,10 @@ db=client.Mydatabase
 Company=db.Company
 Person=db.Person
 SPO=db.SPO
+User=db.User
 def search_company_fullname(input):
     res = SPO.find({'sub': input})
     res=list(res)
-
-
-
-
-
-
     if len(res)==0:
         return 0,None
     G=nx.Graph()
@@ -163,7 +158,6 @@ class pyhtml(object):
             f.write(i.strip('\ufeff'))
         f.close()
         return self.name+".html"
-
 
 
 

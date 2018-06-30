@@ -12,3 +12,8 @@ what'more,mongoDB provides distributed storage and networkx creates complex netw
 ![demo3](demopic/3.png)
 ![demo4](demopic/4.png)
 ![demo5](demopic/5.png)
+
+
+add login,register and admin page
+![demo6](demopic/6.png)
+![demo7](demopic/7.png)
